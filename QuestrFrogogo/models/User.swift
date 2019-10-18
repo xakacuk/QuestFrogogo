@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct User: Encodable {
+struct User: Codable {
     let id: String
     let first_name: String
     let last_name: String
