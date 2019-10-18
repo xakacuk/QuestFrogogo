@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		6676B4E623597E7C00DCA59A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6676B4E423597E7C00DCA59A /* Main.storyboard */; };
 		6676B4E823597E7E00DCA59A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6676B4E723597E7E00DCA59A /* Assets.xcassets */; };
 		6676B4EB23597E7E00DCA59A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6676B4E923597E7E00DCA59A /* LaunchScreen.storyboard */; };
+		6676B4F4235982C200DCA59A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6676B4F3235982C200DCA59A /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		6676B4E723597E7E00DCA59A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6676B4EA23597E7E00DCA59A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6676B4EC23597E7E00DCA59A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6676B4F3235982C200DCA59A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6A6E5836F3117108F295E097 /* Pods-QuestrFrogogo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuestrFrogogo.release.xcconfig"; path = "Target Support Files/Pods-QuestrFrogogo/Pods-QuestrFrogogo.release.xcconfig"; sourceTree = "<group>"; };
 		C805178D6A36B0A0F2EBCC67 /* Pods-QuestrFrogogo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuestrFrogogo.debug.xcconfig"; path = "Target Support Files/Pods-QuestrFrogogo/Pods-QuestrFrogogo.debug.xcconfig"; sourceTree = "<group>"; };
 		EDFB43B47E4144A98EC64855 /* Pods_QuestrFrogogo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuestrFrogogo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +73,7 @@
 			children = (
 				6676B4DE23597E7C00DCA59A /* AppDelegate.swift */,
 				6676B4E223597E7C00DCA59A /* ViewController.swift */,
+				6676B4F2235982B400DCA59A /* models */,
 				6676B4E423597E7C00DCA59A /* Main.storyboard */,
 				6676B4E723597E7E00DCA59A /* Assets.xcassets */,
 				6676B4E923597E7E00DCA59A /* LaunchScreen.storyboard */,
@@ -79,13 +82,20 @@
 			path = QuestrFrogogo;
 			sourceTree = "<group>";
 		};
+		6676B4F2235982B400DCA59A /* models */ = {
+			isa = PBXGroup;
+			children = (
+				6676B4F3235982C200DCA59A /* User.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
 		DF6750D00BB77C60810B3910 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				C805178D6A36B0A0F2EBCC67 /* Pods-QuestrFrogogo.debug.xcconfig */,
 				6A6E5836F3117108F295E097 /* Pods-QuestrFrogogo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -206,6 +216,7 @@
 			files = (
 				6676B4E323597E7C00DCA59A /* ViewController.swift in Sources */,
 				6676B4DF23597E7C00DCA59A /* AppDelegate.swift in Sources */,
+				6676B4F4235982C200DCA59A /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
