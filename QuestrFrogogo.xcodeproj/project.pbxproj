@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25AC4B70A3002E0ABF7CF0AC /* Pods_QuestrFrogogo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDFB43B47E4144A98EC64855 /* Pods_QuestrFrogogo.framework */; };
 		6676B4DF23597E7C00DCA59A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6676B4DE23597E7C00DCA59A /* AppDelegate.swift */; };
 		6676B4E323597E7C00DCA59A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6676B4E223597E7C00DCA59A /* ViewController.swift */; };
 		6676B4E623597E7C00DCA59A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6676B4E423597E7C00DCA59A /* Main.storyboard */; };
@@ -22,6 +23,9 @@
 		6676B4E723597E7E00DCA59A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6676B4EA23597E7E00DCA59A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6676B4EC23597E7E00DCA59A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A6E5836F3117108F295E097 /* Pods-QuestrFrogogo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuestrFrogogo.release.xcconfig"; path = "Target Support Files/Pods-QuestrFrogogo/Pods-QuestrFrogogo.release.xcconfig"; sourceTree = "<group>"; };
+		C805178D6A36B0A0F2EBCC67 /* Pods-QuestrFrogogo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuestrFrogogo.debug.xcconfig"; path = "Target Support Files/Pods-QuestrFrogogo/Pods-QuestrFrogogo.debug.xcconfig"; sourceTree = "<group>"; };
+		EDFB43B47E4144A98EC64855 /* Pods_QuestrFrogogo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuestrFrogogo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25AC4B70A3002E0ABF7CF0AC /* Pods_QuestrFrogogo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2AF4A3B0EA60F2C3208B9C98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EDFB43B47E4144A98EC64855 /* Pods_QuestrFrogogo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6676B4D223597E7C00DCA59A = {
 			isa = PBXGroup;
 			children = (
 				6676B4DD23597E7C00DCA59A /* QuestrFrogogo */,
 				6676B4DC23597E7C00DCA59A /* Products */,
+				DF6750D00BB77C60810B3910 /* Pods */,
+				2AF4A3B0EA60F2C3208B9C98 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +79,16 @@
 			path = QuestrFrogogo;
 			sourceTree = "<group>";
 		};
+		DF6750D00BB77C60810B3910 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C805178D6A36B0A0F2EBCC67 /* Pods-QuestrFrogogo.debug.xcconfig */,
+				6A6E5836F3117108F295E097 /* Pods-QuestrFrogogo.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +96,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6676B4EF23597E7E00DCA59A /* Build configuration list for PBXNativeTarget "QuestrFrogogo" */;
 			buildPhases = (
+				1424020170511FC2069CC3E4 /* [CP] Check Pods Manifest.lock */,
 				6676B4D723597E7C00DCA59A /* Sources */,
 				6676B4D823597E7C00DCA59A /* Frameworks */,
 				6676B4D923597E7C00DCA59A /* Resources */,
+				D50FFEF878275DA1BA98ECEB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +156,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1424020170511FC2069CC3E4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QuestrFrogogo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D50FFEF878275DA1BA98ECEB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuestrFrogogo/Pods-QuestrFrogogo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuestrFrogogo/Pods-QuestrFrogogo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuestrFrogogo/Pods-QuestrFrogogo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6676B4D723597E7C00DCA59A /* Sources */ = {
@@ -278,6 +347,7 @@
 		};
 		6676B4F023597E7E00DCA59A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C805178D6A36B0A0F2EBCC67 /* Pods-QuestrFrogogo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -296,6 +366,7 @@
 		};
 		6676B4F123597E7E00DCA59A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A6E5836F3117108F295E097 /* Pods-QuestrFrogogo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
