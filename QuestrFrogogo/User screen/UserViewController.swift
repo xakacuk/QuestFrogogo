@@ -92,11 +92,30 @@ final class UserViewController: UIViewController {
         }
     }
     
+    private func changeUser(firstName: String, lastName: String, email: String, id: Int) {
+        model.changeUser(firstName: firstName, lastName: lastName, email: email, id: id) { result in
+            switch result {
+                case .success(_):
+                    self.showCompletionAlert() {
+                        self.performSegue(withIdentifier: Cons.unwindSegue.rawValue, sender: nil)
+                    }
+                    break
+                case .failure(let error):
+                    if error._code == NSURLErrorTimedOut {
+                        self.showErrorAlertMessadge(title: "Ошибка", messadge: "проверьте подключение")
+                    } else {
+                        self.showErrorAlertMessadge(title: "Ошибка", messadge: error.localizedDescription)
+                    }
+                    break
+            }
+        }
+    }
+    
     private func changeSelectedUser() {
         if firstNameTextField.text! == selectedUser!.first_name && lastNameTextField.text! == selectedUser!.last_name && emailTextField.text! == selectedUser!.email {
-            
+            self.showErrorAlertMessadge(title: "Ошибка", messadge: "Ни одного поля у пользователя не было изменено")
         } else {
-            
+            changeUser(firstName: firstNameTextField.text!, lastName: lastNameTextField.text!, email: emailTextField.text!, id: selectedUser!.id)
         }
     }
     

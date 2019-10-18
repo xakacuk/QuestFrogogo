@@ -11,6 +11,8 @@ import Alamofire
 
 private enum Path: String {
     case getUsers = "users.json"
+    case changeUser = "users/"
+    case json = ".json"
 }
 
 private enum Const {
@@ -98,37 +100,82 @@ public final class HTTPManager {
         
         self.networkSessionManager.request("\(Const.url)\(Path.getUsers.rawValue)", method: .post, parameters: params, headers: nil).validate().responseJSON { response in
             
-                switch response.result {
-                    case .success(_):
-                        guard let data = response.data else {
-                            assertionFailure()
-                            return
-                        }
-                        
-                        if let rawString = String(bytes: data, encoding: .utf8) {
-                            print(rawString)
-                        }
-                        
-                        completionHandler(.success(""))
-                        break
+            switch response.result {
+                case .success(_):
+                    guard let data = response.data else {
+                        assertionFailure()
+                        return
+                    }
                     
-                    case .failure(let error):
+                    if let rawString = String(bytes: data, encoding: .utf8) {
+                        print(rawString)
+                    }
+                    
+                    completionHandler(.success(""))
+                    break
+                
+                case .failure(let error):
 
-                        if let httpStatusCode = response.response?.statusCode {
+                    if let httpStatusCode = response.response?.statusCode {
 
-                           switch httpStatusCode {
-                                case 422:
-                                    completionHandler(.failure(ApiErrorCode.code422))
-                                    break
-                                default:
-                                    completionHandler(.failure(error))
-                                    break
-                            }
-                        } else {
-                            break
+                       switch httpStatusCode {
+                            case 422:
+                                completionHandler(.failure(ApiErrorCode.code422))
+                                break
+                            default:
+                                completionHandler(.failure(error))
+                                break
                         }
-                }
+                    } else {
+                        break
+                    }
             }
         }
+    }
+    
+    func changeUser(firstName: String, lastName: String, email: String, id: Int, completionHandler: @escaping (Swift.Result<String?, Error>) -> Void) {
+    
+        let params: Parameters = [
+            "user": [
+                "first_name": firstName,
+                "last_name": lastName,
+                "email": email
+            ]
+        ]
+    
+        self.networkSessionManager.request("\(Const.url)\(Path.changeUser.rawValue)\(id)\(Path.json.rawValue)", method: .patch, parameters: params, headers: nil).validate().responseJSON { response in
+            
+            switch response.result {
+                case .success(_):
+                    guard let data = response.data else {
+                        assertionFailure()
+                        return
+                    }
+                    
+                    if let rawString = String(bytes: data, encoding: .utf8) {
+                        print(rawString)
+                    }
+                    
+                    completionHandler(.success(""))
+                    break
+                
+                case .failure(let error):
+
+                    if let httpStatusCode = response.response?.statusCode {
+
+                       switch httpStatusCode {
+                            case 422:
+                                completionHandler(.failure(ApiErrorCode.code422))
+                                break
+                            default:
+                                completionHandler(.failure(error))
+                                break
+                        }
+                    } else {
+                        break
+                    }
+            }
+        }
+    }
     
 }
