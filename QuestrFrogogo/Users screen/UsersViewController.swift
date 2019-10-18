@@ -30,6 +30,10 @@ final class UsersViewController: UIViewController {
         performSegue(withIdentifier: Cons.userSegue.rawValue, sender: self)
     }
     
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
+        getUsers()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRefresh()

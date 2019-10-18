@@ -8,7 +8,12 @@
 
 import UIKit
 
-class UserViewController: UIViewController {
+
+private enum Cons: String {
+    case unwindSegue = "unwindSegue"
+}
+
+final class UserViewController: UIViewController {
     
     private let model = ModelUserViewController()
     
@@ -73,7 +78,7 @@ class UserViewController: UIViewController {
             switch result {
                 case .success(_):
                     self.showCompletionAlert() {
-                        print("qwert")
+                        self.performSegue(withIdentifier: Cons.unwindSegue.rawValue, sender: nil)
                     }
                     break
                 case .failure(let error):
