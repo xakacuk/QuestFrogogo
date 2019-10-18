@@ -16,3 +16,9 @@ struct User: Codable {
     let avatar_url: String?
     let created_at: String
 }
+
+struct CreateUser: Encodable {
+    let first_name: String
+    let last_name: String
+    let email: String
+}

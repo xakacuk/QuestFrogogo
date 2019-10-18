@@ -16,4 +16,18 @@ final class ModelUserViewController {
         
     }
     
+    func addNewUser(user: CreateUser, completion: @escaping (Swift.Result<String, Error>) -> Void) {
+        httpManager.createNewUser(user: user) { result in
+            switch result {
+                case .success(let response):
+                    guard let res = response else { return }
+                    completion(.success(res))
+                    break
+                case .failure(let error):
+                    completion(.failure(error))
+                    break
+            }
+        }
+    }
+    
 }

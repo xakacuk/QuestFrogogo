@@ -86,4 +86,49 @@ public final class HTTPManager {
         }
     }
     
+    func createNewUser(user: CreateUser, completionHandler: @escaping (Swift.Result<String?, Error>) -> Void) {
+        
+        let params: Parameters = [
+            "user": [
+                "first_name": user.first_name,
+                "last_name": user.last_name,
+                "email": user.email
+            ]
+        ]
+        
+        self.networkSessionManager.request("\(Const.url)\(Path.getUsers.rawValue)", method: .post, parameters: params, headers: nil).validate().responseJSON { response in
+            
+                switch response.result {
+                    case .success(_):
+                        guard let data = response.data else {
+                            assertionFailure()
+                            return
+                        }
+                        
+                        if let rawString = String(bytes: data, encoding: .utf8) {
+                            print(rawString)
+                        }
+                        
+                        completionHandler(.success(""))
+                        break
+                    
+                    case .failure(let error):
+
+                        if let httpStatusCode = response.response?.statusCode {
+
+                           switch httpStatusCode {
+                                case 422:
+                                    completionHandler(.failure(ApiErrorCode.code422))
+                                    break
+                                default:
+                                    completionHandler(.failure(error))
+                                    break
+                            }
+                        } else {
+                            break
+                        }
+                }
+            }
+        }
+    
 }

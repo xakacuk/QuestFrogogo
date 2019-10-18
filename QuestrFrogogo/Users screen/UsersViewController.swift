@@ -26,6 +26,10 @@ final class UsersViewController: UIViewController {
         }
     }
     
+    @IBAction func addNewUserBarBtnTap(_ sender: Any) {
+        performSegue(withIdentifier: Cons.userSegue.rawValue, sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRefresh()
@@ -64,8 +68,12 @@ final class UsersViewController: UIViewController {
                     self.refreshControl.endRefreshing()
                     break
                 case .failure(let error):
-                    print(error.localizedDescription)
                     self.refreshControl.endRefreshing()
+                    if error._code == NSURLErrorTimedOut {
+                        self.showErrorAlertMessadge(title: "Ошибка", messadge: "проверьте подключение")
+                    } else {
+                        self.showErrorAlertMessadge(title: "Ошибка", messadge: error.localizedDescription)
+                    }
                     break
             }
         }

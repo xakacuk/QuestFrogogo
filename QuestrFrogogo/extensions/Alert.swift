@@ -15,4 +15,12 @@ extension UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    public func showCompletionAlert(completion: (() -> Void)?) {
+        let alert = UIAlertController(title: "Success", message: "New User Сreate!", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { action in
+            completion?()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
 }

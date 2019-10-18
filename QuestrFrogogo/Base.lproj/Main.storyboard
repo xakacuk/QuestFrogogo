@@ -85,7 +85,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Users" id="Y1y-Fs-YsA">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Znr-LH-dZh"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Znr-LH-dZh">
+                            <connections>
+                                <action selector="addNewUserBarBtnTap:" destination="BYZ-38-t0r" id="fUa-zf-vA8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="usersTableView" destination="LgF-h0-Dbm" id="Zw4-Sc-9cD"/>

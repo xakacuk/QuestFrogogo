@@ -10,6 +10,8 @@ import UIKit
 
 class UserViewController: UIViewController {
     
+    private let model = ModelUserViewController()
+    
     var selectedUser: User?
     
     @IBOutlet weak var firstNameTextField: UITextField!
@@ -23,22 +25,65 @@ class UserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let user = selectedUser else { return }
+        setupTextFields(user: user)
     }
     
     private func isSelectedUser() {
-        if selectedUser == nil {
-            addNewUser()
-        } else {
-            changeSelectedUser()
+        if checkEmptyTextFields() {
+            if selectedUser == nil {
+                guard let newUser = createNewUser() else {
+                    showErrorAlertMessadge(title: "Error", messadge: "Oops!")
+                    return
+                }
+                addNewUser(user: newUser)
+            } else {
+                changeSelectedUser()
+            }
         }
     }
     
-    private func addNewUser() {
-        guard let email = emailTextField.text,
-        let firstName = firstNameTextField.text,
-        let lastName = lastNameTextField.text else {
-            print("qwert")
-            return
+    private func createNewUser() -> CreateUser? {
+        let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespaces)
+        let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespaces)
+        let email = emailTextField.text!.trimmingCharacters(in: .whitespaces)
+        if validateName(name: firstName) && validateName(name: lastName) && validateEmail(enteredEmail: email) {
+            return CreateUser(first_name: firstName, last_name: lastName, email: email)
+        } else {
+            return nil
+        }
+    }
+    
+    private func setupTextFields(user: User) {
+        firstNameTextField.text = user.first_name
+        lastNameTextField.text = user.last_name
+        emailTextField.text = user.email
+    }
+    
+    private func checkEmptyTextFields() -> Bool {
+        if firstNameTextField.text!.trimmingCharacters(in: .whitespaces) == "" || lastNameTextField.text!.trimmingCharacters(in: .whitespaces) == "" && emailTextField.text!.trimmingCharacters(in: .whitespaces) == "" {
+            self.showErrorAlertMessadge(title: "Ошибка", messadge: "Заполните все поля!")
+            return false
+        }
+        return true
+    }
+    
+    private func addNewUser(user: CreateUser) {
+        model.addNewUser(user: user) { result in
+            switch result {
+                case .success(_):
+                    self.showCompletionAlert() {
+                        print("qwert")
+                    }
+                    break
+                case .failure(let error):
+                    if error._code == NSURLErrorTimedOut {
+                        self.showErrorAlertMessadge(title: "Ошибка", messadge: "проверьте подключение")
+                    } else {
+                        self.showErrorAlertMessadge(title: "Ошибка", messadge: error.localizedDescription)
+                    }
+                    break
+            }
         }
     }
     
