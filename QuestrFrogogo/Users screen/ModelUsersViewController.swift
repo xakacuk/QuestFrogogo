@@ -23,7 +23,7 @@ final class ModelUsersViewController {
                     completion(.failure(error))
                     break
             }
-            
+
         }
     }
     
