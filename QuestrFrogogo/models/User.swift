@@ -9,10 +9,10 @@
 import Foundation
 
 struct User: Codable {
-    let id: String
+    let id: Int
     let first_name: String
     let last_name: String
     let email: String
-    let avatar_url: String
+    let avatar_url: String?
     let created_at: String
 }
