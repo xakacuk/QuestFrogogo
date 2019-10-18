@@ -10,13 +10,14 @@ import UIKit
 
 private enum Cons: String {
     case userCell = "userCell"
-    case selectedUserSegue = "selectedUserSegue"
+    case userSegue = "userSegue"
 }
 
 final class UsersViewController: UIViewController {
     
     private let model = ModelUsersViewController()
     private var users = [User]()
+    private var selectedUser: User?
     private var refreshControl: UIRefreshControl!
     
     @IBOutlet weak var usersTableView: UITableView! {
@@ -28,19 +29,25 @@ final class UsersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupRefresh()
+        self.setupTableView()
         getUsers()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        selectedUser = nil
     }
     
     private func setupTableView() {
         usersTableView.delegate = self
         usersTableView.dataSource = self
-        usersTableView.reloadData()
+        usersTableView.refreshControl = refreshControl
+        
     }
     
     private func setupRefresh() {
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        usersTableView.refreshControl = refreshControl
     }
     
     @objc private func refresh() {
@@ -53,7 +60,7 @@ final class UsersViewController: UIViewController {
             switch result {
                 case .success(let response):
                     self.users = response
-                    self.setupTableView()
+                    self.usersTableView.reloadData()
                     self.refreshControl.endRefreshing()
                     break
                 case .failure(let error):
@@ -65,9 +72,9 @@ final class UsersViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Cons.selectedUserSegue.rawValue {
-//            let controller = segue.destination as! FullImageViewController
-//            controller.wallpaper = selectedImage
+        if segue.identifier == Cons.userSegue.rawValue {
+            let vc = segue.destination as! UserViewController
+            vc.selectedUser = selectedUser
         }
     }
 }
@@ -92,6 +99,7 @@ extension UsersViewController: UITableViewDataSource {
 extension UsersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
-        performSegue(withIdentifier: Cons.selectedUserSegue.rawValue, sender: self)
+        selectedUser = users[indexPath.row]
+        performSegue(withIdentifier: Cons.userSegue.rawValue, sender: self)
     }
 }

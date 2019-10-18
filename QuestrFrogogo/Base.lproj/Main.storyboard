@@ -89,24 +89,62 @@
                     </navigationItem>
                     <connections>
                         <outlet property="usersTableView" destination="LgF-h0-Dbm" id="Zw4-Sc-9cD"/>
-                        <segue destination="T5e-js-Tbw" kind="show" identifier="selectedUserSegue" id="YLG-nL-q6S"/>
+                        <segue destination="T5e-js-Tbw" kind="show" identifier="userSegue" id="YLG-nL-q6S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1044.9275362318842" y="109.23913043478262"/>
         </scene>
-        <!--View Controller-->
+        <!--User-->
         <scene sceneID="N62-jl-I9L">
             <objects>
-                <viewController id="T5e-js-Tbw" sceneMemberID="viewController">
+                <viewController id="T5e-js-Tbw" customClass="UserViewController" customModule="QuestrFrogogo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NW4-yL-Dou">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="LYL-1z-Xta">
+                                <rect key="frame" x="8" y="64" width="398" height="166"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bcY-Pq-u8j">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="namePhonePad" textContentType="name"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IRY-LA-SM6">
+                                        <rect key="frame" x="0.0" y="66" width="398" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="namePhonePad" textContentType="family-name"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3sn-v6-qqA">
+                                        <rect key="frame" x="0.0" y="132" width="398" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="LYL-1z-Xta" firstAttribute="leading" secondItem="2Il-A6-k39" secondAttribute="leading" constant="8" id="Ux8-sa-Gd7"/>
+                            <constraint firstItem="2Il-A6-k39" firstAttribute="trailing" secondItem="LYL-1z-Xta" secondAttribute="trailing" constant="8" id="oQI-pZ-vV9"/>
+                            <constraint firstItem="LYL-1z-Xta" firstAttribute="top" secondItem="2Il-A6-k39" secondAttribute="top" constant="20" id="z6w-bY-B2j"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="2Il-A6-k39"/>
                     </view>
-                    <navigationItem key="navigationItem" id="hFs-g0-cvh"/>
+                    <navigationItem key="navigationItem" title="User" id="hFs-g0-cvh">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="HdT-3A-TIy">
+                            <connections>
+                                <action selector="doneBarBtnTap:" destination="T5e-js-Tbw" id="GpD-kS-GTz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="emailTextField" destination="3sn-v6-qqA" id="Vvh-Qi-2vP"/>
+                        <outlet property="firstNameTextField" destination="bcY-Pq-u8j" id="SGZ-Rn-Cei"/>
+                        <outlet property="lastNameTextField" destination="IRY-LA-SM6" id="o0q-5U-tUW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tf9-U9-95W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
