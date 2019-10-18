@@ -39,17 +39,17 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="QfD-te-42p">
-                                                    <rect key="frame" x="96" y="8" width="310" height="80"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="QfD-te-42p">
+                                                    <rect key="frame" x="96" y="16" width="310" height="64"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HcA-ue-y69">
-                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="40"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="la" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HcA-ue-y69">
+                                                            <rect key="frame" x="0.0" y="0.0" width="13" height="32"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CH-2g-bmF">
-                                                            <rect key="frame" x="0.0" y="40" width="0.0" height="40"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="la" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0CH-2g-bmF">
+                                                            <rect key="frame" x="0.0" y="32" width="13" height="32"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -58,9 +58,9 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="QfD-te-42p" firstAttribute="top" secondItem="48i-sF-4VF" secondAttribute="top" constant="8" id="1gh-7T-tis"/>
+                                                <constraint firstItem="QfD-te-42p" firstAttribute="top" secondItem="48i-sF-4VF" secondAttribute="top" constant="16" id="1gh-7T-tis"/>
                                                 <constraint firstAttribute="trailing" secondItem="QfD-te-42p" secondAttribute="trailing" constant="8" id="4DZ-UJ-ebY"/>
-                                                <constraint firstAttribute="bottom" secondItem="QfD-te-42p" secondAttribute="bottom" constant="8" id="mEx-i2-MIh"/>
+                                                <constraint firstAttribute="bottom" secondItem="QfD-te-42p" secondAttribute="bottom" constant="16" id="mEx-i2-MIh"/>
                                                 <constraint firstItem="QfD-te-42p" firstAttribute="leading" secondItem="AMs-cr-fsu" secondAttribute="trailing" constant="8" id="nov-JO-B3V"/>
                                                 <constraint firstItem="AMs-cr-fsu" firstAttribute="centerY" secondItem="48i-sF-4VF" secondAttribute="centerY" id="u86-ij-901"/>
                                                 <constraint firstItem="AMs-cr-fsu" firstAttribute="leading" secondItem="48i-sF-4VF" secondAttribute="leading" constant="8" id="yFt-0p-ZC6"/>
@@ -84,14 +84,33 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Users" id="Y1y-Fs-YsA"/>
+                    <navigationItem key="navigationItem" title="Users" id="Y1y-Fs-YsA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Znr-LH-dZh"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="usersTableView" destination="LgF-h0-Dbm" id="Zw4-Sc-9cD"/>
+                        <segue destination="T5e-js-Tbw" kind="show" identifier="selectedUserSegue" id="YLG-nL-q6S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1044.9275362318842" y="109.23913043478262"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="N62-jl-I9L">
+            <objects>
+                <viewController id="T5e-js-Tbw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NW4-yL-Dou">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="2Il-A6-k39"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hFs-g0-cvh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tf9-U9-95W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2072" y="109"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xmr-0c-Pu2">
